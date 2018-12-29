@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "React project starter with webpack and es6",
   "repository": {
-    "url": "https: //github.com/dinyangetoh/react-webpack-starter.git"
+    "url": "https://github.com/ashraf5097/RestaurantApp.git"
   },
   "main": "index.js",
   "scripts": {
