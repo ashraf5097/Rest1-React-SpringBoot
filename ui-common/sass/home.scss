@@ -1,0 +1,25 @@
+.carousel-inner{
+min-height : 80px;
+max-height : 100px;
+width : 100%;
+};
+
+.bg-color{
+background-color: lightblue;
+}
+
+.menubar{
+padding-left: 20px;
+}
+
+
+
+.nav-link:focus{
+    color: blue !important;
+}
+
+.nav-link:hover{
+    color: green !important;
+}
+
+
