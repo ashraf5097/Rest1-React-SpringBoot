@@ -8,18 +8,88 @@ width : 100%;
 background-color: lightblue;
 }
 
+.box{
+    display: inline-block;
+    margin: 10px;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 2px #ccc;
+    width : 490px;
+    padding: 20px;
+}
+
+.bottom{
+    background-color: skyblue;
+}
+
 .menubar{
-padding-left: 20px;
+    padding-right: .5rem;
+    padding-left: .5rem;
+    display: block;
+    padding: .5rem 1rem;
+    color: white;
 }
 
-
-
-.nav-link:focus{
-    color: blue !important;
-}
-
-.nav-link:hover{
+.menubar:hover{
     color: green !important;
 }
 
+.menubar:active{
+        font-weight: "bold" !important;
+        color: "black" !important;
+}
 
+.toolbar{
+    height: 56px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #703B09;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 90;
+}
+
+.login{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    height: 100%;
+}
+
+.add-in-container-fluid{
+    padding-top: 4% !important;
+}
+
+.form-control{
+width : 100% !important;
+}
+
+.textbox{
+    padding-bottom: 1%;
+}
+
+.button-space{
+    padding-top: 3%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-primary{
+    // width: 9% !important;
+}
+.spanStyleButton{
+    padding-left: 3%
+}
+
+.submit-btn-in-AddRest{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 3%;
+}

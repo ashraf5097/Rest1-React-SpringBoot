@@ -6,8 +6,6 @@ import { BrowserRouter as Router, Route, hashHistory } from 'react-router-dom';
 import index from "./js/index";
 import { Provider } from "react-redux";
 import store from "./store/index";
-import HotelList from "./Component/HotelList";
-import DisplayList from "./Component/DisplayList";
 
 
 // Import bootstrap css
