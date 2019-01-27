@@ -7,7 +7,7 @@ import axios from 'axios';
 // import hotelData from '../newHotelDataConstant';
 import HotelDisplayBox from './HotelDisplayBox';
 import { NavLink } from 'react-router-dom';
-
+import FilterCheckBox from '../Common/FilterCheckBox';
 
 class HotelList extends Component {
 
@@ -18,6 +18,7 @@ class HotelList extends Component {
                 { title: "React Redux Tut", id: 1 },
                 { title: "Redux e React: ", id: 2 },
             ],
+            locationFilter: false,
             message: undefined,
         };
     }
@@ -48,11 +49,61 @@ class HotelList extends Component {
         );
     }
 
+    hotelFilterDisplay (hotelData, index) {
+        return (
+            <FilterCheckBox
+                hotel={hotelData}
+                index={index}
+                // onClick={()=>this.hotelClicked(index, hotelData.id)}
+            />
+        );
+    }
+
+    handleLocationFilter () {
+        let {locationFilter} = this.state;
+        this.setState({
+            locationFilter: !locationFilter,
+        });
+    }
+
+    filterCheckBox (hotel) {
+        let locationArray = [];
+        let uniqueLocationArray = [];
+        let {locationFilter} = this.state;
+        if (hotel) {
+            hotel && hotel.map((hotelData)=>{
+                locationArray.push(hotelData.location);
+            });
+            uniqueLocationArray = [ ...new Set(locationArray) ];
+        }
+
+        return (
+            <div>
+
+                {
+                    locationFilter && uniqueLocationArray && uniqueLocationArray.map((location, index)  =>{
+                        return (
+                            <FilterCheckBox
+                                key={index}
+                                filterdata = {location}
+                            />
+                        );
+                    })
+                }
+            </div>
+        );
+    }
+
     render () {
         const { articles, message } = this.state;
-        console.log("message  = ", message);
+        let restaurantLength = 0;
+        if (message) {
+            restaurantLength = message.length;
+        }
         return (
             <div className="container-fluid add-in-container-fluid">
+                {   }{restaurantLength} Restaurants :
+
                 <div className="row">
                     <div className="col-md-10">
                         {
@@ -63,7 +114,15 @@ class HotelList extends Component {
                     </div>
                     <div className="col-md-2">
                         <aside>
-                            something
+                            Filter based on:
+                            <label 
+                                className="display-flex"
+                                onClick={()=>this.handleLocationFilter()}
+                                                >
+                            location
+                            </label>
+                            {message && this.filterCheckBox(message)}
+
                         </aside>
                     </div>
                 </div>
