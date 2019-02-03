@@ -6,13 +6,12 @@ import { BrowserRouter as Router, Route, hashHistory } from 'react-router-dom';
 import index from "./js/index";
 import { Provider } from "react-redux";
 import store from "./store/index";
-import HotelList from "./Component/HotelList";
-import DisplayList from "./Component/DisplayList";
 
 
 // Import bootstrap css
 import 'bootstrap/dist/css/bootstrap.min.css';
 require('../ui-common/sass/home.scss');
+require('../ui-common/sass/footer.scss');
 
 
 // Render main app
