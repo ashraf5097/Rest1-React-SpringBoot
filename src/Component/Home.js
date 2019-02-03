@@ -7,6 +7,7 @@ class Home extends Component {
     render () {
         return (
             <div className='container'>
+            
                 <div className='row'>
                     <div className='col-md-2'>
                         sdfgh112345

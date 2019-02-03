@@ -142,8 +142,8 @@ class AddRestaurant extends Component {
                                 value={this.state.restName}
                                 handleChange={this.handleChange}
                             />
-                        </div>
-                        <div >
+                        {/* </div>
+                        <div > */}
                             <TextBox
                                 label="Location"
                                 type="text"

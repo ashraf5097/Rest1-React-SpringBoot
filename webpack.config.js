@@ -30,7 +30,7 @@ module.exports = {
 
     // Add babel-loader to transpile js and jsx files
     plugins: [
-        new OpenBrowserPlugin({url: 'http://localhost:3000'}),
+        new OpenBrowserPlugin({url: 'http://localhost:3000/home'}),
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional

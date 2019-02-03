@@ -8,6 +8,10 @@ import axios from 'axios';
 import HotelDisplayBox from './HotelDisplayBox';
 import { NavLink } from 'react-router-dom';
 import FilterCheckBox from '../Common/FilterCheckBox';
+import Button from '../Common/Button';
+import SearchBar from '../Common/SearchBar';
+import FilterMenu from '../Common/FilterMenu';
+let searchText;
 
 class HotelList extends Component {
 
@@ -19,7 +23,11 @@ class HotelList extends Component {
                 { title: "Redux e React: ", id: 2 },
             ],
             locationFilter: false,
+            data: true,
             message: undefined,
+            hotelDataFromApi: undefined,
+            searchText: '',
+            newWaala: undefined,
         };
     }
 
@@ -27,7 +35,10 @@ class HotelList extends Component {
         axios.get('http://localhost:8080/displayHotelList', { mode: 'no-cors'})
             .then(fetchedData => {
                 let hotelData = fetchedData.data;
-                this.setState({message: hotelData });
+                this.setState({
+                    message: hotelData,
+                    hotelDataFromApi: hotelData,
+                });
             });
     }
 
@@ -66,6 +77,29 @@ class HotelList extends Component {
         });
     }
 
+    handleChange (name) {
+        this.setState({
+            data: true,
+        });
+    }
+
+    handleSubmit (name) {
+        let hotelLocationSelected = name;
+        let oldHotelData = [ ...this.state.hotelDataFromApi ];
+        let newHotelData = [];
+
+        if (hotelLocationSelected.length) {
+            oldHotelData.map(hotelData => {
+                if (hotelLocationSelected.indexOf(hotelData.location) > -1) {
+                    newHotelData.push(hotelData);
+                }
+            });
+            this.setState({
+                message: newHotelData,
+            });
+        }
+    }
+
     filterCheckBox (hotel) {
         let locationArray = [];
         let uniqueLocationArray = [];
@@ -76,36 +110,51 @@ class HotelList extends Component {
             });
             uniqueLocationArray = [ ...new Set(locationArray) ];
         }
-
         return (
-            <div>
-
-                {
-                    locationFilter && uniqueLocationArray && uniqueLocationArray.map((location, index)  =>{
-                        return (
-                            <FilterCheckBox
-                                key={index}
-                                filterdata = {location}
-                            />
-                        );
-                    })
-                }
-            </div>
+            <FilterMenu
+                uniqueLocationArray={uniqueLocationArray}
+                locationFilter={locationFilter}
+                onSubmit = {(name)=>this.handleSubmit(name)}
+            />
         );
     }
 
+    handleSearchBar (event) {
+        searchText = event.target.value;
+    }
+
+    handleSearch () {
+        // const {message} = this.state;
+        if (searchText === '' || searchText.trim() === '') {
+            console.log("Error in serach bar");
+        } else {
+            axios.get('http://localhost:8080/searchHotelByName?name=' + searchText, { mode: 'no-cors'})
+                .then(fetchedData => {
+                    let hotelData = fetchedData.data;
+                    this.setState({
+                        message: hotelData,
+                    });
+                });
+        }
+    }
+
     render () {
-        const { articles, message } = this.state;
+        const { articles, message, hotelDataFromApi } = this.state;
         let restaurantLength = 0;
+
         if (message) {
             restaurantLength = message.length;
         }
         return (
             <div className="container-fluid add-in-container-fluid">
-                {   }{restaurantLength} Restaurants :
+                <SearchBar
+                    onType={(event)=>this.handleSearchBar(event)}
+                    onClick = {()=>this.handleSearch()}
+                />
+                <h3>{restaurantLength} Restaurant :</h3>
 
-                <div className="row">
-                    <div className="col-md-10">
+                <div className="row" id="main">
+                    <div className="col-md-10 list-background-color">
                         {
                             message && message.map((hotelData, index)=> {
                                 return this.hotelDisplay(hotelData, index);
@@ -115,18 +164,13 @@ class HotelList extends Component {
                     <div className="col-md-2">
                         <aside>
                             Filter based on:
-                            <label 
-                                className="display-flex"
-                                onClick={()=>this.handleLocationFilter()}
-                                                >
+                            <label className="display-flex cursor-css" onClick={()=>this.handleLocationFilter()} >
                             location
                             </label>
-                            {message && this.filterCheckBox(message)}
-
+                            {hotelDataFromApi && this.filterCheckBox(hotelDataFromApi)}
                         </aside>
                     </div>
                 </div>
-                <Bottom />
             </div>
         );
     }

@@ -11,6 +11,7 @@ import store from "./store/index";
 // Import bootstrap css
 import 'bootstrap/dist/css/bootstrap.min.css';
 require('../ui-common/sass/home.scss');
+require('../ui-common/sass/footer.scss');
 
 
 // Render main app

@@ -1,21 +1,33 @@
-import React from 'react';
+import React, {Component} from 'react';
+class FilterCheckBox extends Component {
 
-const FilterCheckBox = (props) => {
+    constructor (props) {
+        super(props);
+        this.state = {
+            articles: [
+                { title: "React Redux Tut", id: 1 },
+                { title: "Redux e React: ", id: 2 },
+            ],
+            locationFilter: false,
+            message: undefined,
+        };
+    }
 
-    return (
-        <div className = "checkbox-label">
-            <div className = "textbox" >
-                {props.filterdata}
+    handleChange (name) {
+        this.props && this.props.onChange(name);
+    }
+
+    render () {
+        let option = this.props.filterdata
+        return (
+            <div className="">
+                <div class="custom-control custom-checkbox ">
+                    <input type="checkbox" className="custom-control-input" id={option} onChange={()=>this.handleChange(option)} />
+                    <label className="custom-control-label cursor-css" for={option}>{this.props.filterdata}</label>
+                </div>
             </div>
-            <div className = "float-checkbox">
-                <label class="decorate-checkbox">
-                    <span class="checkBox"></span>
-                    <svg width="16" class="_2m7ny _1GLei" viewBox="0 0 24 24"><path d="M24,0 L24,24 L0,24 L0,0 L24,0 Z M9.5,18.25 L20.75,7.43269231 L19,5.75 L9.5,14.8846154 L5,10.5576923 L3.25,12.2403846 L9.5,18.25 Z"></path>
-                    </svg>
-                </label>
-            </div>
-        </div>
-    );
-};
+        );
+    }
+}
 export default FilterCheckBox;
 

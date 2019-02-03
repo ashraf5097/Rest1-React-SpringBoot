@@ -8,24 +8,22 @@ import AddRestaurant from './Component/Restaurant/AddRestaurant';
 import Home from './Component/Home.js';
 import FoodInRest from './Component/Food/FoodInRest';
 import AddFood from './Component/Food/AddFood';
+import Footer from './Component/Bottom';
 import { hot } from "react-hot-loader";
 
 class App extends React.Component {
 
     render () {
         return (
-            <div>
-                <div>
-                    <div>
-                        <MenuBar />
-                        <Route path="/home" component={Home} />
-                        <Route path="/hotel" component={HotelList} />
-                        <Route path="/foodInRest" component={FoodInRest} />
-                        <Route path="/addFood" component={AddFood} />
-                        <Route path="/addRestaurant" component={AddRestaurant} />
-                        {/* <Route path="/contact" component={contact} /> */}
-                    </div>
-                </div>
+            <div className="whole-page-background-color">
+                <MenuBar />
+                <Route path="/home" component={Home} />
+                <Route path="/hotel" component={HotelList} />
+                <Route path="/foodInRest" component={FoodInRest} />
+                <Route path="/addFood" component={AddFood} />
+                <Route path="/addRestaurant" component={AddRestaurant} />
+                <Footer />
+                {/* <Route path="/contact" component={contact} /> */}
             </div>
         );
     }

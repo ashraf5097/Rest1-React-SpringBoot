@@ -11,14 +11,22 @@ background-color: lightblue;
 .box{
     display: inline-block;
     margin: 10px;
-    border: 1px solid #eee;
-    box-shadow: 0 2px 2px #ccc;
-    width : 490px;
+    border: 1px solid black;
+    width : 500px;
     padding: 20px;
+    background-color: lemonchiffon;
+    border-radius: 4px !important;
 }
 
 .bottom{
     background-color: skyblue;
+}
+
+.box:hover{
+    box-shadow: 0 2px 2px black;
+    font-style: bold;
+    font-weight: 600;
+    border-radius: 4px !important;
 }
 
 .hover-on-row:hover{
@@ -39,8 +47,8 @@ background-color: lightblue;
 }
 
 .menubar:active{
-        font-weight: "bold" !important;
-        color: "black" !important;
+    font-weight: bolder !important;
+    color: ghostwhite !important;
 }
 
 .toolbar{
@@ -70,15 +78,19 @@ background-color: lightblue;
 
 .add-in-container-fluid{
     padding-top: 4% !important;
+    margin-left: 15px !important;
 }
 
 .form-control{
 width : 100% !important;
+background-color: ghostwhite;
+border-color: darkgrey;
 }
 
 .textbox{
     padding-bottom: 1%;
     padding-left: 5%;
+    cursor: pointer;
 }
 
 .button-space{
@@ -103,7 +115,8 @@ width : 100% !important;
 .checkBox {
     cursor: pointer;
     display: block;
-    height: 100%;
+    width: 24%;
+    height: 73%;
     border: 1px solid #a9abb2;
     background-color: transparent;
     transition: border .3s;
@@ -117,7 +130,6 @@ width : 100% !important;
 }
 
 .float-checkbox{
-    float: left;
     padding-top: 3%;
 }
 
@@ -149,4 +161,36 @@ width : 100% !important;
 
 ._1GLei {
     fill: #fc8019;
+}
+._1WnJw{
+    display: none;
+}
+
+.cursor-css{
+    cursor: pointer;
+}
+
+.filter-box{
+    display: inline-block;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 2px #ccc;
+    width: 100%;
+    padding-left: 7%;
+    padding-bottom: 4%;
+    padding-top: 4%;
+}
+
+.list-background-color{
+    background-color: darkslategrey;
+    border-radius: 4px;
+}
+
+#custom-search-input{
+    padding-top: 1%;
+    padding-bottom: 2%;
+    margin-left: 9%;
+}
+
+.whole-page-background-color{
+    background-color: beige;
 }
